@@ -3,8 +3,16 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+  # GET /products.xml
   def index
     @products = Product.all
+
+    # JSON and XML interface if need
+    respond_to do |format|
+      format.html #index.html.erb
+      format.json {render json: @product}
+      format.xml {render xml: @product}
+    end
   end
 
   # GET /products/1
